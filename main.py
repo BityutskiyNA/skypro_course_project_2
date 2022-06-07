@@ -1,16 +1,26 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import utils
+import players
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print('Ввведите имя игрока')
+    name = input()
+    pl = players.Pleer(name)
+    print(f'Привет, {pl.username}!')
+    word = utils.load_random_word()
+    print(f'Составьте {word.len_allowed_subwords()} слов из слова {word.original_word}')
+    print('Слова должны быть не короче 3 букв')
+    print('Поехали, ваше первое слово?')
+    x = 0
+    while x < word.len_allowed_subwords():
+        x += 1
+        answear = input()
+        if answear == 'stop' or answear == 'стоп':
+            utils.end_game(pl)
+        elif word.test_words(answear):
+            pl.add_words(answear)
+            print('верно')
+        else:
+            print('не верно')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    utils.end_game(pl)
