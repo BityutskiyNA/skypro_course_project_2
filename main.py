@@ -10,6 +10,7 @@ if __name__ == '__main__':
     word = utils.load_random_word()
     print(f'Составьте {word.len_allowed_subwords()} слов из слова {word.original_word}')
     print('Слова должны быть не короче 3 букв')
+    print('Чтобы закончить игру, угадайте все слова или напишите "stop"')
     print('Поехали, ваше первое слово?')
     x = 0
     while x < word.len_allowed_subwords():
